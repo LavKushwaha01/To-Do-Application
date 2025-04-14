@@ -18,9 +18,8 @@ function App() {
 
  async function submit(){
   try {
-    const response = await axios.post(' http://localhost:5000/signup', formdata); // assuming proxy is set
+    const response = await axios.post(' http://localhost:3000/signup', formdata); // assuming proxy is set
    console.log("your data is saved in DB",{ formdata })
-   alert("user saved:" + response.data.email)
     return response.email;
   } catch (error) {
     console.error('Error saving user data:', error);

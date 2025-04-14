@@ -1,39 +1,30 @@
-import express, { json } from 'express';
-import { mongoose } from 'mongoose';
-import cors from 'cors';
+import express, { json }  from 'express'
+import cors from 'cors'
+import { connectDB   } from './Database/connect.js'
+import { User } from './Database/db.js'
 
-mongoose.connect("mongodb+srv://lavkumar062:SxvMKIyMlAA5EyyU@cluster0.v4ibkbc.mongodb.net/Mern-Project" , {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then(() => console.log('MongoDB connected'))
-    .catch(err => console.error(err));
-  
-  const UserSchema = new mongoose.Schema({
-    email: String,
-    password: String,
-  });
-  
-  const User = mongoose.model('User', UserSchema);
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+await connectDB();
 
 app.post('/signup', async (req, res) => {
     
     try {
+      console.log("starting");
         const { email , password } = req.body;
         const newUser = new User({ email , password });
         await newUser.save();
-        res.status(201).json({ message: 'User saved', user: newUser });
-        console.log("saved in database")
+         res.status(201).json({ message: 'User saved', user: newUser });
+        // console.log("saved in database")
     } catch (err) {
         console.log("failed")
       res.status(500).json({ message: 'Error saving user', error: err });
     }
   });
   
-  app.listen(5000, () => {
-    console.log('Server is running on http://localhost:5000');
+  app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
   });
