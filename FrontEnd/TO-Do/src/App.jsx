@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './App.css'
-import '../..//../Backend/singup'
+
 
 function App() {
- const [formdata, setformdata] = useState({email:'',password:''});
+ const [formdata, setformdata] = useState({email:'', password:''});
 
  const changes = function (props){
   setformdata({
@@ -12,29 +12,28 @@ function App() {
   });
  };
 
-
-
- const callBackend = async (e) => {
-  e.preventDefault();
-  try{
-    const res = await axios.post('http://localhost:5000/api/users',formdata);
+ async function submit(){
+  try {
+    const response = await axios.post('/signup', formdata); // assuming proxy is set
+   console.log("your data is saved in DB",{ formdata })
+   alert("user saved:" + response.data.email)
+    return response.email;
+  } catch (error) {
+    console.error('Error saving user data:', error);
+    throw error;
   }
-  catch(error) {
-    console.error('Error saving data:', error);
-  }
- }
+ };
 
   return (
     <>
-    <form onClick={callBackend}>
-   <input type="text" name="email" placeholder='enter your email here' value={formdata.email} onChange={changes}/>
-   <input type="text" name="password" placeholder='enter your email here' value={formdata.password} onChange={changes}/>
-   <button type='submit' >Submit</button>
-   
-   </form>
+   <input type="text" name="email" placeholder='enter your email here' defaultValue={formdata.email} onChange={changes}/>
+   <input type="text" name="password" placeholder='enter your email here' defaultValue={formdata.password} onChange={changes}/>
+   <button onClick={()=> submit() } >Submit</button>
+
     </>
   )
 }
 
 
-export default App
+export default App 
+
