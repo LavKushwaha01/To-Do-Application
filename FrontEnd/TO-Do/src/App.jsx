@@ -18,9 +18,8 @@ function App() {
 
  async function submit(){
   try {
-    const response = await axios.post(' http://localhost:3000/signup', formdata); // assuming proxy is set
-   console.log("your data is saved in DB",{ formdata })
-    return response.email;
+    const response = await axios.post(' http://localhost:3000/singup', formdata); 
+    return response.data;
   } catch (error) {
     console.error('Error saving user data:', error);
     throw error;
@@ -29,14 +28,15 @@ function App() {
 
   return (
     <>
+   <form onSubmit= {()=> submit() }>
    <input type="text" name="email" placeholder='enter your email here' defaultValue={formdata.email} onChange={changes}/>
    <input type="text" name="password" placeholder='enter your email here' defaultValue={formdata.password} onChange={changes}/>
-   <button onClick={()=> submit() } >Submit</button>
-
+   <button type='submit' >Submit</button>
+   </form>
     </>
-  )
-}
+  );
 
+}
 
 export default App 
 

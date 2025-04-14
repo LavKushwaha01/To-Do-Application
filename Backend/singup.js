@@ -10,20 +10,20 @@ app.use(cors());
 
 await connectDB();
 
-app.post('/signup', async (req, res) => {
+app.post('/singup', async (req, res) => {
     
     try {
-      console.log("starting");
         const { email , password } = req.body;
         const newUser = new User({ email , password });
         await newUser.save();
          res.status(201).json({ message: 'User saved', user: newUser });
-        // console.log("saved in database")
+         console.log("saved in database")
     } catch (err) {
         console.log("failed")
       res.status(500).json({ message: 'Error saving user', error: err });
     }
   });
+
   
   app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
