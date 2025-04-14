@@ -4,17 +4,21 @@ import './App.css'
 
 
 function App() {
- const [formdata, setformdata] = useState({email:'', password:''});
+ const [formdata, setformdata] = useState({
+  email:'',
+  password:''
+  });
 
  const changes = function (props){
   setformdata({
+    ...formdata,
     [props.target.name]: props.target.value,
   });
  };
 
  async function submit(){
   try {
-    const response = await axios.post('/signup', formdata); // assuming proxy is set
+    const response = await axios.post(' http://localhost:5000/signup', formdata); // assuming proxy is set
    console.log("your data is saved in DB",{ formdata })
    alert("user saved:" + response.data.email)
     return response.email;
