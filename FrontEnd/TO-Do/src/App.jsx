@@ -9,6 +9,9 @@ function App() {
   password:''
   });
 
+  const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState("");
+
  const changes = function (props){
   setformdata({
     ...formdata,
@@ -19,8 +22,19 @@ function App() {
  async function submit(){
   try {
     const response = await axios.post(' http://localhost:3000/singup', formdata); 
+    
+
+    if (response.ok) {
+      const data = await response.json();
+      setMessage(data.message || "Saved successfully!");
+      setSubmitted(true);
+    } else {
+      setMessage("Failed to save. Try again.");
+    }
     return response.data;
-  } catch (error) {
+  }
+
+   catch (error) {
     console.error('Error saving user data:', error);
     throw error;
   }
@@ -28,12 +42,16 @@ function App() {
 
   return (
     <>
+      {!submitted ? (
    <form onSubmit= {()=> submit() }>
    <input type="text" name="email" placeholder='enter your email here' defaultValue={formdata.email} onChange={changes}/>
    <input type="text" name="password" placeholder='enter your email here' defaultValue={formdata.password} onChange={changes}/>
    <button type='submit' >Submit</button>
-   </form>
+   </form>) : (
+  <div className="text-green-600 text-lg font-semibold"> {message}</div>
+)}
     </>
+
   );
 
 }
