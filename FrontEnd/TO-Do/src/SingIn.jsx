@@ -31,9 +31,9 @@ function SignIn() {
   return (
     <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
       <h2>Sign In</h2>
-      <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-      <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-      <button type="submit">Sign In</button>
+      <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
+      <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
+      <button type="submit"  style={{margin:"10px"}}>Sign In</button>
     </form>
   );
 }

@@ -35,11 +35,12 @@ function Singup() {
        <div>
          {!submitted ? (
       <form onSubmit={(e) => { e.preventDefault(); submit(); } }>
-      <input type="text" name="email" placeholder='enter your email here' value={formdata.email} onChange={changes} required/>
-      <input type="text" name="password" placeholder='enter your email here' value={formdata.password} onChange={changes} required/>
-      <button type='submit'  >Submit</button>
+        <h2 style={{color: "black"}}>Signup</h2>
+      <input type="email" name="email" placeholder='enter your email' value={formdata.email} onChange={changes} required/> <br />
+      <input type="password" name="password" placeholder='enter your password' value={formdata.password} onChange={changes} required/> <br />
+      <button type='submit' style={{margin:"10px"}} >Submit</button>
       </form>) : (
-     <h3>{message}</h3>
+     <><h3>{message}</h3><a href="">click here to SignIn</a></>
    )}
        </div>
    
