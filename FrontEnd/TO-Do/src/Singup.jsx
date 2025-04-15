@@ -19,7 +19,7 @@ function Singup() {
     };
     async function submit(){
      try {
-       const response = await axios.post(' http://localhost:3000/singup', formdata); 
+       const response = await axios.post(' http://localhost:3000/signup', formdata); 
          setMessage("Congaratulations you are now singup");
          setSubmitted(true);
          console.log(formdata)
