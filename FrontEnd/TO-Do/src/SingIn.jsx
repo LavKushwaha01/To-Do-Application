@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState("");
 
   async function submit(){
     try {
@@ -15,12 +19,14 @@ function SignIn() {
       });
 
       const data = await response.json();
-      if (response.ok) {
+      if (response.user) {
         alert('Sign In Successful');
         console.log(data);
       } 
       else {
-        alert(data.message || 'Sign In Failed');
+        alert('Sign In Failed');
+        setSubmitted(true);
+        setMessage(data.message)
       }
     }
      catch (err) {
@@ -29,12 +35,20 @@ function SignIn() {
   };
 
   return (
+    <div id='formbox'>
+       {!submitted  ? (
     <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
-      <h2>Sign In</h2>
+      <h2 style={{color: "black" , paddingTop: "40px"}}>Sign In</h2>
       <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
       <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
       <button type="submit"  style={{margin:"10px"}}>Sign In</button>
-    </form>
+    </form> ) : (
+      <div id='message'><h3 >{message}</h3>
+    <Link to={"/singup"} >Click here to 'Sign up'</Link>
+    </div>
+   
+  )}
+   </div>
   );
 }
 

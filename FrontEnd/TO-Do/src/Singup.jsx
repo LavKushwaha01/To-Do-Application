@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SignIn from './SingIn';
+import { Link } from 'react-router-dom';
+
 
 function Singup() {
     const [formdata, setformdata] = useState({
@@ -20,9 +23,9 @@ function Singup() {
     async function submit(){
      try {
        const response = await axios.post(' http://localhost:3000/signup', formdata); 
-         setMessage("Congaratulations you are now singup");
+         setMessage(response.data.message);
          setSubmitted(true);
-         console.log(formdata)
+         
      }
     
       catch (error) {
@@ -32,18 +35,23 @@ function Singup() {
     };
    
      return (
-       <div>
-         {!submitted ? (
+        <div id='formbox'>
+         {!submitted  ? (
       <form onSubmit={(e) => { e.preventDefault(); submit(); } }>
-        <h2 style={{color: "black"}}>Signup</h2>
+        <h2 style={{color: "black", paddingTop: "40px"}}>Sign up</h2>
       <input type="email" name="email" placeholder='enter your email' value={formdata.email} onChange={changes} required/> <br />
       <input type="password" name="password" placeholder='enter your password' value={formdata.password} onChange={changes} required/> <br />
-      <button type='submit' style={{margin:"10px"}} >Submit</button>
-      </form>) : (
-     <><h3>{message}</h3><a href="">click here to SignIn</a></>
+      <button type='submit' style={{margin:"10px"}} >Sign up</button>
+      
+      </form> ) : (
+
+          <div id='message'><h3 >{message}</h3>
+        <Link to={"/singin"} >Click here to 'Sign in'</Link>
+        </div>
+
    )}
-       </div>
-   
+       
+     </div>
      );
    
    }

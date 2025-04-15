@@ -27,15 +27,15 @@ function App() {
 function Landing() {
     return <div>
         <h1 style={{ color: "black" }}>Your To-Do Application..</h1>
-        <div id='layout' style={{ background: "#5ebec4", padding: "100px" }} >
+        <div id='layout' style={{ background: "#5ebec4", padding: "100px"}} >
             <nav>
                 <h3 style={{ fontFamily: "cursive" }}>
                     🌟 "Welcome back! Let’s make today productive." <br />
                     📝 "Your day, your tasks, your rhythm."  <br />
-                    🎯 "Stay focused, stay organized, stay awesome." <br /> <br />
+                    🎯 "Stay focused, stay organized, stay awesome." <br /> 
                 </h3>
 
-                <h1 style={{ fontFamily: "monospace", color: "#6e6e6e" }} > Let's Start Our new Day with smile 😊 </h1>
+                <h1 style={{ fontFamily: "monospace", color: "#6e6e6e" }} > Let's Start Your Day with smile 😊 </h1>
 
                 <div class="container" >
                     <div>
@@ -49,7 +49,7 @@ function Landing() {
                 </div>
             </nav>
         </div>
-        <footer >Made with by Lav Kushwaha</footer>
+        <footer style={{color: "black", fontFamily:"cursive", fontSize: "20px" }}>Made with 💖 by lav</footer>
     </div>
 }
 
@@ -60,6 +60,7 @@ function ErrorPage() {
         </div>
     );
 }
+
 
 
 export default App

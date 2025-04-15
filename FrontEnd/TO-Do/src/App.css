@@ -41,6 +41,12 @@
   color: #888;
 }
 
-h3{
-  color: rgb(233, 248, 243);
+h3 {
+  font-size: 1.5rem;         /* Slightly smaller than h2, readable */
+  font-weight: 600;          /* Medium-bold for emphasis */
+  line-height: 1.4;          /* Comfortable spacing */
+  color: #1f2937;            /* Neutral dark gray (good on light backgrounds) */
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;   /* Tighten slightly for modern look */
 }

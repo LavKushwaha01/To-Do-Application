@@ -2,7 +2,7 @@
 
 import express from 'express';
 import cors from 'cors';
-import bcrypt from 'bcryptjs'; // 👈 for password hashing
+import bcrypt from 'bcryptjs'; 
 import { connectDB } from './Database/connect.js';
 import { User } from './Database/db.js';
 
@@ -19,7 +19,7 @@ app.post('/signup', async (req, res) => {
 
     const existing = await User.findOne({ email });
     if (existing) {
-      return res.status(400).json({ message: 'User already exists' });
+      return res.json({ message: '⚠️ already Signup' });
     }
 
     // Hash the password before saving
@@ -27,11 +27,10 @@ app.post('/signup', async (req, res) => {
     const newUser = new User({ email, password: hashedPassword });
     await newUser.save();
 
-    res.status(201).json({ message: 'User saved', user: newUser });
-    console.log("User saved in database");
+    res.status(201).json({ message: "Congratulations! you'r now Signup ✅ ", user: newUser });
   } catch (err) {
     console.log("Signup failed:", err);
-    res.status(500).json({ message: 'Error saving user', error: err });
+    res.json({ message: 'Error saving user', error: err });
   }
 });
 
@@ -42,17 +41,17 @@ app.post('/signin', async (req, res) => {
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.json({ message: "🚫 you'r not Signup yet" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.json({ message: '❌ Invalid email or password' });
     }
 
-    res.json({ message: 'Sign in successful', user: { email: user.email } });
+    res.status(201).json({ message: 'Sign in successful', user: { email: user.email } });
   } catch (err) {
-    res.status(500).json({ message: 'Login failed', error: err });
+    res.status(500).json({ message: '🌐 Login failed' });
   }
 });
 
