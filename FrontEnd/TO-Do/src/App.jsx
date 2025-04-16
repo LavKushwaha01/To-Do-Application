@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css'
 import Singup from './singUp';
 import SignIn from './SingIn';
+import Profile from './profile';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" element={<Landing />} />
                     <Route path="/singup" element={<Singup />} />
                     <Route path="/singin" element={<SignIn />} />
+                    <Route path="/profile" element={<Profile />} />
                     <Route path="*" element={<ErrorPage />} />
 
                 </Routes>
