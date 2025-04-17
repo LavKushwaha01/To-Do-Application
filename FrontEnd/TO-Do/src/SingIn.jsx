@@ -36,6 +36,7 @@ function SignIn() {
   };
 
   return (
+    <div>
     <div id='formbox'>
       {!submitted ? (
         <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
@@ -53,7 +54,7 @@ function SignIn() {
               <button type="submit" style={{ margin: "10px" }}>Sign In</button>
             </form>
             <div id='message'><h3 >{message}</h3>
-              <Link id='link' to={"/singup"} >Click here to 'Sign up'</Link>
+              <Link id='link' to={"/singup"} >Click here to 'Sign Up'</Link>
             </div>
           </div>) : (
           message == 'Sign in successful' ? (
@@ -75,8 +76,10 @@ function SignIn() {
       )
 
       }
-
-    </div>
+ 
+    </div>   <br /><br /><br /><br /><br /><br />
+     <footer style={{color: "white", fontFamily:"cursive", fontSize: "20px", background:"black"}}>Made with 💖 by lav</footer>
+     </div>
   );
 }
 

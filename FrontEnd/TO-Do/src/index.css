@@ -113,7 +113,7 @@ input:focus {
   padding: 2rem;                   /* inner space */
   /* background-color: #343333;       white background */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  height: 52vh;
+  height: 51vh;
   width: 55vh;
 border-radius: 25px;
   background-color: rgba(68, 200, 227, 0.5);
@@ -142,7 +142,7 @@ border-radius: 25px;
   padding: 2rem;                   /* inner space */
   /* background-color: #343333;       white background */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  height: 52vh;
+  height: 51vh;
   width: 55vh;
 border-radius: 25px;
   background-color: rgba(68, 200, 227, 0.5);

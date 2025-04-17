@@ -36,30 +36,33 @@ function Singup() {
     };
    
      return (
+      <div>
         <div id='formbox'>
          {!submitted  ? (
       <form onSubmit={(e) => { e.preventDefault(); submit(); } }>
-        <h2 style={{color: "black", paddingTop: "40px"}}>Sign up</h2>
+        <h2 style={{color: "black", paddingTop: "40px"}}>Sign Up</h2>
       <input type="email" name="email" placeholder='enter your email' value={formdata.email} onChange={changes} required/> <br />
       <input type="password" name="password" placeholder='enter your password' value={formdata.password} onChange={changes} required/> <br />
-      <button type='submit' style={{margin:"10px"}} >Sign up</button>
+      <button type='submit' style={{margin:"10px"}} >Sign Up</button>
       
       </form> ) : (
         <div>
 <form onSubmit={(e) => { e.preventDefault(); submit(); } }>
-<h2 style={{color: "black", paddingTop: "40px"}}>Sign up</h2>
+<h2 style={{color: "black", paddingTop: "40px"}}>Sign Up</h2>
 <input type="email" name="email" placeholder='enter your email' value={formdata.email} onChange={changes} required/> <br />
 <input type="password" name="password" placeholder='enter your password' value={formdata.password} onChange={changes} required/> <br />
-<button type='submit' style={{margin:"10px"}} >Sign up</button>
+<button type='submit' style={{margin:"10px"}} >Sign Up</button>
 
 </form>
           <div id='message'><h3 >{message}</h3>
-        <Link id='link' to={"/singin" } >Click here to 'Sign in'</Link>
+        <Link id='link' to={"/singin" } >Click here to 'Sign In'</Link>
         </div>
 
         </div>
    )}
        
+     </div>  <br /><br /><br /><br /><br /><br />
+     <footer style={{color: "white", fontFamily:"cursive", fontSize: "20px", background:"black"}}>Made with 💖 by lav</footer>
      </div>
      );
    

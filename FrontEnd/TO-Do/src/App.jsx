@@ -35,17 +35,17 @@ function Landing() {
             
             <nav>
                 <h1 style={{ fontFamily: "cursive" }}>
-                Welcome to 𝕥𝕒𝕤𝕜𝕝𝕪
+                Welcome to 𝕥𝕒𝕤𝕜𝕝𝕪..
                 </h1>
                 <h1></h1>
                 <div class="container" >
                     <div>
-                        <h5>New user?</h5>
-                        <Link to="/singup" className="nav-link">Singup</Link>
+                        <h5>New User?</h5>
+                        <Link to="/singup" className="nav-link">Sign Up</Link>
                     </div>
                     <div>
-                        <h5>Already SignUp</h5>
-                        <Link to="/singin" className="nav-link">Singin</Link> 
+                        <h5>Already Sign Up</h5>
+                        <Link to="/singin" className="nav-link">Sign In</Link> 
                     </div>
                 </div>
             </nav>

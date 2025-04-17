@@ -21,13 +21,32 @@ font-family: Arial, sans-serif; /* You can customize this font */
   min-width: 100vb;
   min-height: 100vh;
 }
-h2{
-    color: black;
-    margin-right: 40px;
-}
+
 #navigation{
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: aquamarine;
+    background-color: rgba(68, 200, 227, 0.5);
+    
 }
+#inner-nev{
+    margin-left: 600px;
+    display: flex;
+    align-items: center;
+}
+
+#todoinput{
+    width: 400px;
+    margin-left: 340px
+}
+#inputbt{
+    margin-right: 150px;
+}
+
+#preinput{
+    background-color: rgba(68, 200, 227, 0.5);
+    width: 300px;
+    height: 500px;
+} 
