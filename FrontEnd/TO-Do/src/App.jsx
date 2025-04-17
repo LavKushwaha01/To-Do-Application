@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import axios from 'axios';
 import './App.css'
+import './index.css'
 import Singup from './singUp';
 import SignIn from './SingIn';
 import Profile from './profile';
@@ -26,19 +27,17 @@ function App() {
 }
 
 
+
 function Landing() {
     return <div>
-        <h1 style={{ color: "black" }}>Your To-Do Application..</h1>
-        <div id='layout' style={{ background: "#5ebec4", padding: "100px"}} >
+        
+        <div id='layout' >
+            
             <nav>
-                <h3 style={{ fontFamily: "cursive" }}>
-                    🌟 "Welcome back! Let’s make today productive." <br />
-                    📝 "Your day, your tasks, your rhythm."  <br />
-                    🎯 "Stay focused, stay organized, stay awesome." <br /> 
-                </h3>
-
-                <h1 style={{ fontFamily: "monospace", color: "#6e6e6e" }} > Let's Start Your Day with smile 😊 </h1>
-
+                <h1 style={{ fontFamily: "cursive" }}>
+                Welcome to 𝕥𝕒𝕤𝕜𝕝𝕪
+                </h1>
+                <h1></h1>
                 <div class="container" >
                     <div>
                         <h5>New user?</h5>
@@ -46,12 +45,12 @@ function Landing() {
                     </div>
                     <div>
                         <h5>Already SignUp</h5>
-                        <Link to="/singin" className="nav-link">Singin</Link> <br />
+                        <Link to="/singin" className="nav-link">Singin</Link> 
                     </div>
                 </div>
             </nav>
-        </div>
-        <footer style={{color: "black", fontFamily:"cursive", fontSize: "20px" }}>Made with 💖 by lav</footer>
+        </div> <br /><br /><br /><br /><br /><br />
+        <footer style={{color: "white", fontFamily:"cursive", fontSize: "20px", background:"black"}}>Made with 💖 by lav</footer>
     </div>
 }
 

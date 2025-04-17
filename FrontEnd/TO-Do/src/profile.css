@@ -1,0 +1,33 @@
+button{
+    background-color: rgb(108, 233, 108);
+}
+
+.todoAdd{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+}
+
+body{
+
+font-family: Arial, sans-serif; /* You can customize this font */
+  height: 100%; /* Ensure full height for body */
+  background-color: white; /* Default background color */
+  display: flex; /* Allow flexbox layout */
+  flex-direction: column; /* Ensure content is stacked vertically */
+  justify-content: flex-start; /* Align items to the top */
+  align-items: flex-start; /* Align content to the left */
+  position: relative;
+  min-width: 100vb;
+  min-height: 100vh;
+}
+h2{
+    color: black;
+    margin-right: 40px;
+}
+#navigation{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: aquamarine;
+}

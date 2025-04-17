@@ -5,7 +5,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #fdf5df;
+  /* background-color: #fdf5df; */
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,6 +30,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+ 
 }
 
 h1 {
@@ -107,14 +109,20 @@ input:focus {
 }
 
 #formbox{
-background: #5ebec4;
-height: 55vh;
-width: 55vh;
+  border: 2px solid #101115;     
+  padding: 2rem;                   /* inner space */
+  /* background-color: #343333;       white background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  height: 52vh;
+  width: 55vh;
 border-radius: 25px;
-position: relative;
+  background-color: rgba(68, 200, 227, 0.5);
+  margin-top: 120px; /* white with 50% opacity */
+ margin-left: 520px;
+
 }
 
-#message{
+/* #message{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -122,12 +130,22 @@ position: relative;
   padding:0px;
   color: rgb(73, 224, 80);
   border-radius: 8px;
-}
+} */
 
+#link{
+  color: rgb(33, 16, 106);
+  font-size: larger;
+  font-weight: 300;
+}
 #layout{
-  border: 2px solid #101115;       /* light gray border */
-  border-radius: 25px;             /* soft corners */
+  border: 2px solid #101115;     
   padding: 2rem;                   /* inner space */
-  background-color: #ffffff;       /* white background */
+  /* background-color: #343333;       white background */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  height: 52vh;
+  width: 55vh;
+border-radius: 25px;
+  background-color: rgba(68, 200, 227, 0.5);
+  margin-top: 120px; /* white with 50% opacity */
+ margin-left: 520px;
 }

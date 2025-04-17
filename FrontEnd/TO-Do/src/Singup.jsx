@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import SignIn from './SingIn';
 import { Link } from 'react-router-dom';
+import './App.css'
 
 
 function Singup() {
@@ -44,11 +45,19 @@ function Singup() {
       <button type='submit' style={{margin:"10px"}} >Sign up</button>
       
       </form> ) : (
+        <div>
+<form onSubmit={(e) => { e.preventDefault(); submit(); } }>
+<h2 style={{color: "black", paddingTop: "40px"}}>Sign up</h2>
+<input type="email" name="email" placeholder='enter your email' value={formdata.email} onChange={changes} required/> <br />
+<input type="password" name="password" placeholder='enter your password' value={formdata.password} onChange={changes} required/> <br />
+<button type='submit' style={{margin:"10px"}} >Sign up</button>
 
+</form>
           <div id='message'><h3 >{message}</h3>
-        <Link to={"/singin"} >Click here to 'Sign in'</Link>
+        <Link id='link' to={"/singin" } >Click here to 'Sign in'</Link>
         </div>
 
+        </div>
    )}
        
      </div>
