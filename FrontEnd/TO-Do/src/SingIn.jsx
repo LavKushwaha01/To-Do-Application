@@ -41,16 +41,16 @@ function SignIn() {
       {!submitted ? (
         <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
           <h2 style={{ color: "black", paddingTop: "40px" }}>Sign In</h2>
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
-          <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
           <button type="submit" style={{ margin: "10px" }}>Sign In</button>
         </form>) : (
         message != 'Invalid email or password' ? (
           <div>
             <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
               <h2 style={{ color: "black", paddingTop: "40px" }}>Sign In</h2>
-              <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
-              <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
               <button type="submit" style={{ margin: "10px" }}>Sign In</button>
             </form>
             <div id='message'><h3 >{message}</h3>
@@ -65,8 +65,8 @@ function SignIn() {
             <div>
               <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
                 <h2 style={{ color: "black", paddingTop: "40px" }}>Sign In</h2>
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
-                <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
                 <button type="submit" style={{ margin: "10px" }}>Sign In</button>
                 <h4 style={{ color: "red" }}>Inncorect password </h4>
               </form>
