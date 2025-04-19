@@ -8,11 +8,28 @@ function Profile() {
 
   const [searchDate, setSearchDate] = useState('');
 
-  let today = new Date().toISOString().split('T')[0];
+  const [todayTasks, setTodayTasks] = useState([]);
 
-
+  const [darkMode, setDarkMode] = useState(false);
 
   const [myTasks, setMyTasks] = useState([]);
+
+  const todayDate = new Date().toLocaleString('en-CA', {
+    timeZone: 'Asia/Kolkata',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).split(',')[0];
+
+  const [queryDate, setQueryDate] = useState(todayDate);
+
+
+  const todayTotal = todayTasks.length;
+  const todayComplete = todayTasks.filter(task => task.completed).length;
+  const todaypending = todayTotal - todayComplete;
+  const Efficiency = todayTotal === 0 ? 0 : todayComplete / todayTotal;
+  const fixedEfficiency = parseFloat(Efficiency.toFixed(2));
+
 
   const toTitleCase = (str) =>
     str
@@ -36,6 +53,7 @@ function Profile() {
       const response = await axios.delete(`http://localhost:3000/profile/delete/${taskid}`);
       console.log("Deleted successfully:", response.data);
       fetchTodos();
+      fetchTodayTodos();
       // Update your UI or state here
     } catch (error) {
       console.error("Error deleting item:", error);
@@ -48,7 +66,8 @@ function Profile() {
       await axios.patch(`http://localhost:3000/profile/updatetodo/${taskId}`, {
         completed: newStatus
       });
-      fetchTodos(); // Refresh list
+      fetchTodos();
+      fetchTodayTodos(); // Refresh list
     } catch (error) {
       console.error("Error updating todo status", error);
     }
@@ -67,15 +86,15 @@ function Profile() {
   };
 
   const handleSearch = () => {
-      today = searchDate.toString().split('T')[0];
-      fetchTodos();
+    setQueryDate(searchDate);
+    fetchTodos();
 
   }
 
   const fetchTodos = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:3000/profile/todo?date=${today}` , {
+      const response = await axios.get(`http://localhost:3000/profile/todo?date=${queryDate}`, {
         headers: { Authorization: token }
       });
       setMyTasks(response.data);
@@ -84,8 +103,22 @@ function Profile() {
     }
   };
 
+  const fetchTodayTodos = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`http://localhost:3000/profile/todo?date=${todayDate}`, {
+        headers: { Authorization: token }
+      });
+      setTodayTasks(response.data);
+    } catch (error) {
+      console.error("Error fetching today's todos", error);
+    }
+  };
+
+
   useEffect(() => {
     fetchTodos();
+    fetchTodayTodos();
   }, []);
 
   const handleAddTodo = async (taskText) => {
@@ -96,7 +129,7 @@ function Profile() {
 
     const newTodo = {
       todo: titleCaseTask,
-      date: today,
+      date: todayDate,
     };
     try {
       const token = localStorage.getItem('token');
@@ -104,7 +137,8 @@ function Profile() {
         headers: { Authorization: token }
       });
       inputRef.current.value = ''
-      fetchTodos();  // Refresh the to-dos after adding
+      fetchTodos();
+      fetchTodayTodos();  // Refresh the to-dos after adding
     } catch (error) {
       console.error("Error adding todo", error);
     }
@@ -135,7 +169,7 @@ function Profile() {
 
 
   return (
-    <div>
+    <div className={darkMode ? 'dark-mode' : 'light-mode'}>
       {/* {email!='' ?(
      <div> */}
       <div id='navigation'>
@@ -229,13 +263,49 @@ function Profile() {
               <li key={task._id || index} className="my-task-item">
                 {task.todo}
                 <input type="checkbox" id='cheakbox' checked={task.completed} onChange={() => handleCheckboxToggle(task._id, !task.completed)} />
-                <button className='change delete' onClick={()=> deleteTodo(task._id)}>Delete</button>
-          
+                <button className='change delete' onClick={() => deleteTodo(task._id)}>Delete</button>
+
               </li>
             ))}
           </ul>
         </div>
+        <div id='overall'>
 
+          <div id='todaytask' >
+            <h3 style={{ margin: '15px', paddingTop: '15px' }} id='today'>Today's Stats</h3>
+            {Efficiency === 1 ? (
+              <p style={{ fontSize: "18px", color: '#28a745' }}>"🎉 All tasks completed! You're on fire today!"</p>
+
+            ) : (
+              <div>
+                <p style={{ color: '#E57373', fontWeight: 'bolder', marginBottom: '3px' }}>🚀 Stay focused! {todaypending} tasks still need your magic.</p>
+              </div>
+            )
+            }
+            <p style={{ fontSize: "18px" }}>📝 Total Tasks: <strong>{todayTotal}</strong></p>
+            <p style={{ fontSize: "18px" }}>✅ Completed Tasks: <strong>{todayComplete}</strong></p>
+            <p style={{ fontSize: "18px" }}>⏳ Pending Tasks: <strong>{todaypending}</strong></p>
+            <p style={{ fontSize: "18px" }}>📈 Efficiency: <strong>{fixedEfficiency}</strong></p>
+
+
+          </div>
+
+          <div>
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              style={{
+                marginTop: "80px",
+                marginRight: "20px",
+                padding: "8px",
+                borderRadius: "8px",
+                backgroundColor: darkMode ? "#222" : "#eee",
+                color: darkMode ? "#fff" : "#000"
+              }}
+            >
+              {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+            </button>
+          </div>
+        </div>
 
       </div>
       <div id='footer' style={{ display: 'flex', height: "85px", marginTop: "16px" }}>

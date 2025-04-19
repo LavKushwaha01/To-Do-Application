@@ -48,7 +48,7 @@ body {
 
 #todoinput {
     width: 400px;
-    margin-left: 400px
+    margin-left: 250px
 }
 
 #inputbt {
@@ -93,7 +93,7 @@ body {
 
 #main-content {
     background-color: rgba(68, 200, 227, 0.5);
-    width: 900px;
+    width: 870px;
     margin-left: 30px;
     border-radius: 15px;
 }
@@ -101,7 +101,7 @@ body {
 #middle {
 
     background-color: rgba(68, 200, 227, 0.5);
-    ;
+    
 
 }
 
@@ -175,3 +175,54 @@ li {}
     margin-top: 7px;
 
 }
+
+
+#todaytask{
+    width: 300px;
+    background-color: rgba(68, 200, 227, 0.5);
+    margin-bottom: 20px;
+    color: #272626;
+    font-family: cursive;
+    border-radius: 10px;
+    height: 34vh;
+   padding-bottom: 10px;
+
+}
+
+p{
+    margin: 5px;
+}
+#overall{
+    margin-left:20px ;
+    margin-right: 20px;
+    margin-top: 60px;
+}
+
+/* Light Mode (Default) */
+.light-mode {
+    color: #222;
+  }
+  
+  /* Dark Mode */
+  .dark-mode {
+    background-color: #1e1e1e;
+    color: #f9f9f9;
+  }
+  
+  .dark-mode #todoinput,
+  .dark-mode input,
+  .dark-mode button,
+  .dark-mode #todaytask,
+  .dark-mode #all,
+  .dark-mode #preinput,
+  .dark-mode #navigation,
+  .dark-mode #main-content {
+    background-color: #2e2e2e;
+    color: #f9f9f9;
+    border: 1px solid #555;
+  }
+  .dark-mode #today{
+    color: #eaf2ef;
+  }
+
+  
