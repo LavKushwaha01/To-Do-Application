@@ -8,6 +8,18 @@ function Profile() {
 
   const [searchDate, setSearchDate] = useState('');
 
+  const today = new Date().toISOString().split('T')[0];
+
+
+
+  const [myTasks, setMyTasks] = useState([]);
+
+  const toTitleCase = (str) =>
+    str
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
 
   const frequentTasks = [
     'Go to class',
@@ -19,13 +31,24 @@ function Profile() {
     'walk 6000 steps'
   ];
 
-  const [myTasks, setMyTasks] = useState([]);
-
-  const addTask = (task) => {
-    if (!myTasks.includes(task)) {
-      setMyTasks([...myTasks, task]);
+  const handleCheckboxToggle = async (taskId, newStatus) => {
+    try {
+      await axios.patch(`http://localhost:3000/profile/updatetodo/${taskId}`, {
+        completed: newStatus
+      });
+      fetchTodos(); // Refresh list
+    } catch (error) {
+      console.error("Error updating todo status", error);
     }
   };
+
+  const addTask = (taskText) => {
+    const titleCaseTask = toTitleCase(taskText);
+    if (!myTasks.some(task => task.todo === titleCaseTask)) {
+      setMyTasks(prev => [...prev, { todo: titleCaseTask, date: today }]);
+      handleAddTodo(titleCaseTask);
+    };
+  }
 
   const handleChange = (e) => {
     setSearchDate(e.target.value);
@@ -35,6 +58,40 @@ function Profile() {
 
   }
 
+  const fetchTodos = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/profile/todo?date=${today}`);
+      setMyTasks(response.data);
+    } catch (error) {
+      console.error("Error fetching todos", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  const handleAddTodo = async (taskText) => {
+    const trimmed = taskText.trim();
+    if (!trimmed) return;
+
+    const titleCaseTask = toTitleCase(trimmed);
+
+    const newTodo = {
+      todo: titleCaseTask,
+      date: today,
+    };
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post('http://localhost:3000/profile/Addtodo', newTodo, {
+        headers: { Authorization: token }
+      });
+      inputRef.current.value = ''
+      fetchTodos();  // Refresh the to-dos after adding
+    } catch (error) {
+      console.error("Error adding todo", error);
+    }
+  }
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -53,9 +110,10 @@ function Profile() {
   }, []);
 
   async function focusOnInput() {
-    inputRef.current.focus();
-    console.log(inputRef.current.value);
-    addTask(inputRef.current.value);
+    const inputVal = inputRef.current.value.trim();
+    if (!inputVal) return;
+    addTask(inputVal);
+    inputRef.current.value = '';
   }
 
 
@@ -151,9 +209,9 @@ function Profile() {
           <h2 className="todo-list-heading">📝 My Todo List</h2>
           <ul className="task-list">
             {myTasks.map((task, index) => (
-              <li key={index} className="my-task-item">
-                {task}
-                <input type="checkbox" id='cheakbox' />
+              <li key={task._id || index} className="my-task-item">
+                {task.todo}
+                <input type="checkbox" id='cheakbox' checked={task.completed} onChange={() => handleCheckboxToggle(task._id, !task.completed)} />
               </li>
             ))}
           </ul>
@@ -161,68 +219,68 @@ function Profile() {
 
 
       </div>
-      <div id='footer' style={{ display: 'flex',height:"85px" , marginTop:"16px"}}>
-        
-      <footer >
-      <h5 style={{margin:"0px" , padding:"0px" , marginLeft:"450px"}}>connect with Me..</h5>
-      <div id='icon-container'>
-        {/* LinkedIn */}
-        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-            alt="LinkedIn"
-            className='iconImage'
-            style={{marginLeft:"550px"}}
-          />
-        </a>
+      <div id='footer' style={{ display: 'flex', height: "85px", marginTop: "16px" }}>
 
-        {/* Discord */}
-        <a href="https://discord.com/users/your-id" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discordjs/discordjs-original.svg"
-            alt="Discord"
-            className='iconImage'
-          />
-        </a>
+        <footer >
+          <h5 style={{ margin: "0px", padding: "0px", marginLeft: "450px" }}>connect with Me..</h5>
+          <div id='icon-container'>
+            {/* LinkedIn */}
+            <a href="https://www.linkedin.com/in/lav-kushwaha-b9057b292/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                alt="LinkedIn"
+                className='iconImage'
+                style={{ marginLeft: "550px" }}
+              />
+            </a>
 
-        {/* GitHub */}
-        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-            alt="GitHub"
-            className='iconImage'
-          />
-        </a>
+            {/* Discord */}
+            <a href="https://discord.com/users/lavkushwaha01" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discordjs/discordjs-original.svg"
+                alt="Discord"
+                className='iconImage'
+              />
+            </a>
 
-        {/* Telegram */}
-        <a href="https://t.me/your-username" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
-            alt="Telegram"
-            className='iconImage'
-          />
-        </a>
-           {/* Instagram */}
-           <a href="https://instagram.com/your-username" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-            alt="Instagram"
-            className='iconImage'
-          />
-        </a>
+            {/* GitHub */}
+            <a href="https://github.com/LavKushwaha01" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                alt="GitHub"
+                className='iconImage'
+              />
+            </a>
 
-        {/* Facebook */}
-        <a href="https://facebook.com/your-profile" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
-            alt="Facebook"
-            className='iconImage'
-          />
-        </a>
+            {/* Telegram */}
+            <a href="https://t.me/lavkushwaha01" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
+                alt="Telegram"
+                className='iconImage'
+              />
+            </a>
+            {/* Instagram */}
+            <a href="https://www.instagram.com/lav.ig_/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                alt="Instagram"
+                className='iconImage'
+              />
+            </a>
+
+            {/* Facebook */}
+            <a href="https://www.facebook.com/lavkumar.lavkumar.355" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
+                alt="Facebook"
+                className='iconImage'
+              />
+            </a>
+          </div>
+        </footer>
       </div>
-    </footer>
-      </div>
-      
+
       {/* </div>
       ) :(
         <div>
