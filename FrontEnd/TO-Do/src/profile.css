@@ -113,6 +113,7 @@ body {
     margin-right: 20px;
     font-size: large;
     font-family: cursive;
+    position: relative;
 }
 
 #footer {
@@ -150,4 +151,27 @@ li {}
 .task-list {
     color: black;
     font-weight: 300;
+}
+
+.change{
+    padding: 0.5em 1em;         /* Adds space inside the button around the text */
+    font-size: 1rem;            /* Ensures readable text */
+    border: none;               /* Removes default border */
+    border-radius: 8px;         /* Optional: makes edges rounded */
+    background-color: #790c0cf1;  /* Blue background */
+    color: white;               /* White text */
+    cursor: pointer;            /* Changes cursor to pointer on hover */
+    white-space: nowrap;        /* Prevents text wrapping */
+    overflow: hidden;           /* Hides overflow if any */
+    text-overflow: ellipsis;
+    margin-right: 15px;
+    
+}
+
+.delete{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 7px;
+
 }

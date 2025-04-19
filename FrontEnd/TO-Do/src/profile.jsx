@@ -8,7 +8,7 @@ function Profile() {
 
   const [searchDate, setSearchDate] = useState('');
 
-  const today = new Date().toISOString().split('T')[0];
+  let today = new Date().toISOString().split('T')[0];
 
 
 
@@ -30,6 +30,18 @@ function Profile() {
     'go to gym',
     'walk 6000 steps'
   ];
+
+  const deleteTodo = async (taskid) => {
+    try {
+      const response = await axios.delete(`http://localhost:3000/profile/delete/${taskid}`);
+      console.log("Deleted successfully:", response.data);
+      fetchTodos();
+      // Update your UI or state here
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
 
   const handleCheckboxToggle = async (taskId, newStatus) => {
     try {
@@ -55,12 +67,17 @@ function Profile() {
   };
 
   const handleSearch = () => {
+      today = searchDate.toString().split('T')[0];
+      fetchTodos();
 
   }
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/profile/todo?date=${today}`);
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`http://localhost:3000/profile/todo?date=${today}` , {
+        headers: { Authorization: token }
+      });
       setMyTasks(response.data);
     } catch (error) {
       console.error("Error fetching todos", error);
@@ -212,6 +229,8 @@ function Profile() {
               <li key={task._id || index} className="my-task-item">
                 {task.todo}
                 <input type="checkbox" id='cheakbox' checked={task.completed} onChange={() => handleCheckboxToggle(task._id, !task.completed)} />
+                <button className='change delete' onClick={()=> deleteTodo(task._id)}>Delete</button>
+          
               </li>
             ))}
           </ul>

@@ -106,8 +106,11 @@ app.post('/profile/Addtodo', async (req, res) => {
 // API route to get today's todos
 app.get('/profile/todo', async (req, res) => {
   const { date } = req.query;
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  const email = decoded.email;
   try {
-    const todos = await Todo.find({ date });
+    const todos = await Todo.find({ date ,email });
     res.json(todos);
   } catch (err) {
     res.status(500).send('Error fetching todos');
@@ -125,6 +128,21 @@ app.patch('/profile/updatetodo/:id', async (req, res) => {
   } catch (error) {
     console.error('Error updating task status:', error);
     res.status(500).json({ error: 'Failed to update task' });
+  }
+});
+
+
+// delete functionality
+app.delete('/profile/delete/:id', async (req, res) => {
+  try {
+    const deletedTodo = await Todo.findByIdAndDelete(req.params.id);
+    if (!deletedTodo) {
+      return res.status(404).json({ message: "Todo not found" });
+    }
+    res.json({ message: "Todo deleted", deleted: deletedTodo });
+  } catch (error) {
+    console.error("Error deleting todo:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
