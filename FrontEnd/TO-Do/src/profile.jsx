@@ -28,7 +28,7 @@ function Profile() {
   const todayComplete = todayTasks.filter(task => task.completed).length;
   const todaypending = todayTotal - todayComplete;
   const Efficiency = todayTotal === 0 ? 0 : todayComplete / todayTotal;
-  const fixedEfficiency = parseFloat(Efficiency.toFixed(2));
+  const fixedEfficiency = parseFloat(Efficiency.toFixed(2))*100;
 
 
   const toTitleCase = (str) =>
@@ -86,15 +86,14 @@ function Profile() {
   };
 
   const handleSearch = () => {
-    setQueryDate(searchDate);
-    fetchTodos();
+    fetchTodos(searchDate);
 
   }
 
-  const fetchTodos = async () => {
+  const fetchTodos = async (date = queryDate) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:3000/profile/todo?date=${queryDate}`, {
+      const response = await axios.get(`http://localhost:3000/profile/todo?date=${date}`, {
         headers: { Authorization: token }
       });
       setMyTasks(response.data);
@@ -285,7 +284,7 @@ function Profile() {
             <p style={{ fontSize: "18px" }}>📝 Total Tasks: <strong>{todayTotal}</strong></p>
             <p style={{ fontSize: "18px" }}>✅ Completed Tasks: <strong>{todayComplete}</strong></p>
             <p style={{ fontSize: "18px" }}>⏳ Pending Tasks: <strong>{todaypending}</strong></p>
-            <p style={{ fontSize: "18px" }}>📈 Efficiency: <strong>{fixedEfficiency}</strong></p>
+            <p style={{ fontSize: "18px" }}>📈 Efficiency : <strong>{fixedEfficiency} %</strong></p>
 
 
           </div>

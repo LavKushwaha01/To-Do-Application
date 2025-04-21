@@ -1,7 +1,0 @@
-{
-  "type": "module",
-  
-  "dependencies": {
-    "mongoose": "^8.13.2"
-  }
-}

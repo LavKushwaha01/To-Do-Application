@@ -1,0 +1,25 @@
+
+import SignUp from './SignUp.js'
+import SignIn from './SignIn.js'
+import profile from './Profile.js'
+
+import express from 'express';
+import cors from 'cors';
+
+const app = express();
+ app.use(express.json());
+app.use(cors());
+
+
+
+app.use('/' , SignIn);
+app.use('/' , SignUp);
+app.use('/profile' , profile);
+
+
+
+
+
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
