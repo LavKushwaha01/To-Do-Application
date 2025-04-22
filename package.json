@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-  "start": "node server.js"
+  "start": "node Server.js"
 },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
