@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-axios.defaults.baseURL = 'https://to-do-application-uyb6.onrender.com/api';
-axios.defaults.withCredentials = true;
+
 import './App.css'
 
 function SignIn() {

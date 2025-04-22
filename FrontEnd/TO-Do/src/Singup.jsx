@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import axios from 'axios';
-axios.defaults.baseURL = 'https://to-do-application-uyb6.onrender.com/api';
-axios.defaults.withCredentials = true;
+
 
 import SignIn from './SingIn';
 import { Link } from 'react-router-dom';

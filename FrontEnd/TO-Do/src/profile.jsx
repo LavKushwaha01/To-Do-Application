@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import axios from 'axios';
-axios.defaults.baseURL = 'https://to-do-application-uyb6.onrender.com/api';
-axios.defaults.withCredentials = true;
+
 
 import './profile.css';
 
