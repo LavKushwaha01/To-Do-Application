@@ -6,6 +6,7 @@
 - 🔐 **Email Login**
 - 📝 **Add, Edit, Delete Todos**
 - 📅 **Search Todos by Date**
+- 📅 **Analyze your Daily performance**
 - 🌙 **Dark Mode** (optional)
 
 
@@ -35,32 +36,39 @@
 
 
 ## 🧪 How It Works
-1. **User Login**
- **Users can log in with their email to generate a JWT token for authenticated access.**
+1. **User Sign Up**
+   **Users can SignUp by email(Real/New) and Set their password**
 
-2. **Task Management** 
+2. **User Sign In**
+ **Users can SignIn with same email and password to generate a JWT token for authenticated access.**
+
+3. **Task Management** 
   **Users can create, complete, delete, or update their tasks for the current day.**
 
-3. **Date Filtering**
+4. **Date Filtering**
   **Use the built-in date picker to view tasks from any previous day.**
 
-4. **Secure Routes**
+5. **Secure Routes**
   **All task routes are protected using JWT, ensuring that only authenticated users can access their data.**
 
+6. **performance record**
+   **Users can see their performance of Current Day**
 
 ## 📦 API Endpoints
 
 ## 🔐 Auth
-- **POST /api/auth/login – Login with email, returns JWT token**
+- **POST /signin – Login with email, returns JWT token**
 
 ## ✅ Todos
-- **POST /api/todos – Add new todo (JWT required)**
+- **GET / -  Users Home page (JWT required)** 
 
-- **GET /api/todos/:date – Get todos by date (JWT required)**
+- **POST /Addtodo – Add new todo (JWT required)**
 
-- **PUT /api/todos/:id – Update a todo**
+- **GET /todo/:date – Get todos by date (JWT required)**
 
-- **DELETE /api/todos/:id – Delete a todo**  
+- **PUT /updatetodo/:id – Update a todo**
+
+- **DELETE /delete/:id – Delete a todo**  
 
 ## 🔧 Setup & Installation
 1.  **Clone the Repo**
