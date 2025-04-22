@@ -1,6 +1,10 @@
 
 import { BrowserRouter, Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+
 import axios from 'axios';
+axios.defaults.baseURL = 'https://to-do-application-uyb6.onrender.com/api';
+axios.defaults.withCredentials = true;
+
 import './App.css'
 import './index.css'
 import Singup from './Singup';
