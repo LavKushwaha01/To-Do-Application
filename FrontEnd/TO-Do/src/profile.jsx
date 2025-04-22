@@ -325,7 +325,11 @@ function Profile() {
       </div>
       ) :(
         <div>
-            <h1>404 internal server error</h1>
+            <h1 style={{
+              display:"flex",
+              justifyContent:'center',
+              color:'red',
+            }}>Loading.. <br /><br /> Please wait for DataBase Fetch</h1>
         </div>
       )
 
