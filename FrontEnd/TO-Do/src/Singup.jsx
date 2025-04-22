@@ -40,7 +40,7 @@ function Singup() {
       <div id='formbox'>
         {!submitted ? (
           <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
-            <h2 style={{ color: "black", paddingTop: "40px" }}>Sign Up</h2>
+            <h2 style={{ color: "black", paddingTop: "20px" }}>Sign Up</h2>
             <input type="email" name="email" placeholder='enter your email' value={formdata.email} onChange={changes} required /> <br />
             <input type="password" name="password" placeholder='enter your password' value={formdata.password} onChange={changes} required /> <br />
             <button type='submit' style={{ margin: "10px" }} >Sign Up</button>
@@ -48,7 +48,7 @@ function Singup() {
           </form>) : (
           <div>
             <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
-              <h2 style={{ color: "black", paddingTop: "40px" }}>Sign Up</h2>
+              <h2 style={{ color: "black", paddingTop: "20px" }}>Sign Up</h2>
               <input type="email" name="email" placeholder='enter your email' value={formdata.email} onChange={changes} required /> <br />
               <input type="password" name="password" placeholder='enter your password' value={formdata.password} onChange={changes} required /> <br />
               <button type='submit' style={{ margin: "10px" }} >Sign Up</button>

@@ -40,7 +40,7 @@ function SignIn() {
       <div id='formbox'>
         {!submitted ? (
           <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
-            <h2 style={{ color: "black", paddingTop: "40px" }}>Sign In</h2>
+            <h2 style={{ color: "black", paddingTop: "20px" }}>Sign In</h2>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
             <button type="submit" style={{ margin: "10px" }}>Sign In</button>
@@ -48,7 +48,7 @@ function SignIn() {
           message != 'Invalid email or password' ? (
             <div>
               <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
-                <h2 style={{ color: "black", paddingTop: "40px" }}>Sign In</h2>
+                <h2 style={{ color: "black", paddingTop: "20px" }}>Sign In</h2>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
                 <button type="submit" style={{ margin: "10px" }}>Sign In</button>
@@ -64,7 +64,7 @@ function SignIn() {
             ) : (
               <div>
                 <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
-                  <h2 style={{ color: "black", paddingTop: "40px" }}>Sign In</h2>
+                  <h2 style={{ color: "black", paddingTop: "20px" }}>Sign In</h2>
                   <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required /> <br />
                   <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required /> <br />
                   <button type="submit" style={{ margin: "10px" }}>Sign In</button>
