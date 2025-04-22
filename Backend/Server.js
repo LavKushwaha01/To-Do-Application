@@ -5,8 +5,6 @@ import profile from './Profile.js'
 
 import express from 'express';
 import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 const app = express();
  app.use(express.json());
@@ -17,16 +15,6 @@ app.use(cors({ origin: 'https://to-do-application-three-xi.vercel.app', credenti
 app.use('/' , SignIn);
 app.use('/' , SignUp);
 app.use('/profile' , profile);
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.static(path.join(__dirname, '..', 'FrontEnd', 'TO-Do', 'dist'))); // adjust path if needed
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'FrontEnd', 'TO-Do', 'dist', 'index.html'));
-});
 
 
 app.listen(process.env.PORT, () => {
