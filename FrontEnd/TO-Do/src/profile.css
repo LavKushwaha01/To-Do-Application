@@ -118,6 +118,9 @@ body {
 
 #footer {
     background-color: #393939;
+    padding-bottom: 8px;
+    margin-bottom: 0px;
+    height: 60px;
 
 }
 
@@ -126,7 +129,7 @@ li {}
 #icon-container {
     display: flex;
     justify-content: 'center';
-    gap: 20px
+    gap: 20px;
 }
 
 .iconImage {

@@ -85,7 +85,7 @@ npm install
 3. **Set up environment variables Create a .env file in the root with the following:**
 ```ini
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
+MONGO_URL=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
  ``` 
 

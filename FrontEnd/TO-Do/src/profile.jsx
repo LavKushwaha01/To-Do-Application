@@ -169,55 +169,11 @@ function Profile() {
 
   return (
     <div className={darkMode ? 'dark-mode' : 'light-mode'}>
-      {/* {email!='' ?(
-     <div> */}
+      {email!='' ?(
+     <div>
       <div id='navigation'>
-        <div id='logo section'>
-
-        </div>
-        <div id='inner-nev'>
-          <div>
-            <img
-              src="https://www.nicepng.com/png/full/17-178841_home-png-home-icon-free.png"
-              style={{
-                width: 34,
-                height: 34,
-                marginRight: "40px"
-              }}
-            />
-          </div>
-          <div>
-            <img
-              src="https://icon-library.com/images/tick-icon-png/tick-icon-png-2.jpg"
-              style={{
-                width: 34,
-                height: 34,
-                marginRight: "40px"
-              }}
-            />
-          </div>
-          <div>
-            <img
-              src="https://img.freepik.com/free-icon/wall-clock_318-633461.jpg"
-              style={{
-                width: 34,
-                height: 34,
-                marginRight: "40px"
-              }}
-            />
-          </div>
-          <div>
-            <img
-              src="https://cdn0.iconfinder.com/data/icons/business-dual-color-glyph-set-2/128/analytics-1024.png"
-              style={{
-                width: 38,
-                height: 34,
-                marginRight: "40px"
-              }}
-            />
-          </div>
-
-        </div>
+        <h1 style={{margin:'0px', padding:'0px', marginLeft:'600px', fontFamily:'cursive', fontSize:'30px'}}>Welcome to taskly</h1>
+        
       </div>
 
       <div className='todoAdd top-wrapper'>
@@ -310,7 +266,7 @@ function Profile() {
       <div id='footer' style={{ display: 'flex', height: "85px", marginTop: "16px" }}>
 
         <footer >
-          <h5 style={{ margin: "0px", padding: "0px", marginLeft: "450px" }}>connect with Me..</h5>
+          <h5 style={{ margin: "5px", padding: "0px", marginLeft: "550px", color:'white' }}>connect with Me..</h5>
           <div id='icon-container'>
             {/* LinkedIn */}
             <a href="https://www.linkedin.com/in/lav-kushwaha-b9057b292/" target="_blank" rel="noopener noreferrer">
@@ -318,7 +274,7 @@ function Profile() {
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
                 alt="LinkedIn"
                 className='iconImage'
-                style={{ marginLeft: "550px" }}
+                style={{ marginLeft: "550px" , marginBottom:'5px'}}
               />
             </a>
 
@@ -348,35 +304,28 @@ function Profile() {
                 className='iconImage'
               />
             </a>
-            {/* Instagram */}
-            <a href="https://www.instagram.com/lav.ig_/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                alt="Instagram"
-                className='iconImage'
-              />
-            </a>
 
-            {/* Facebook */}
-            <a href="https://www.facebook.com/lavkumar.lavkumar.355" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
-                alt="Facebook"
-                className='iconImage'
-              />
-            </a>
+            {/* Email */}
+    <a href="mailto:lavkumar062@gmail.com" target="_blank" rel="noopener noreferrer">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+        alt="Email"
+        className="iconImage"
+        
+      />
+    </a>
           </div>
         </footer>
       </div>
 
-      {/* </div>
+      </div>
       ) :(
         <div>
             <h1>404 internal server error</h1>
         </div>
       )
 
-      } */}
+      }
     </div>
 
 
