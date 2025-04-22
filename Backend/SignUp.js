@@ -20,7 +20,7 @@ const router = express.Router();
 
 
 // Sign Up Route
-router.post('/signup', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
 

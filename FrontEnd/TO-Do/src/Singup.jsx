@@ -23,7 +23,7 @@ function Singup() {
   };
   async function submit() {
     try {
-      const response = await axios.post(' https://to-do-application-uyb6.onrender.com/signup', formdata);
+      const response = await axios.post(' https://to-do-application-uyb6.onrender.com/api/signup', formdata);
       setMessage(response.data.message);
       setSubmitted(true);
 

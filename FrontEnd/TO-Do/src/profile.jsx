@@ -50,7 +50,7 @@ function Profile() {
 
   const deleteTodo = async (taskid) => {
     try {
-      const response = await axios.delete(`https://to-do-application-uyb6.onrender.com/profile/delete/${taskid}`);
+      const response = await axios.delete(`https://to-do-application-uyb6.onrender.com/api/profile/delete/${taskid}`);
       console.log("Deleted successfully:", response.data);
       fetchTodos();
       fetchTodayTodos();
@@ -63,7 +63,7 @@ function Profile() {
 
   const handleCheckboxToggle = async (taskId, newStatus) => {
     try {
-      await axios.patch(`https://to-do-application-uyb6.onrender.com/profile/updatetodo/${taskId}`, {
+      await axios.patch(`https://to-do-application-uyb6.onrender.com/api/profile/updatetodo/${taskId}`, {
         completed: newStatus
       });
       fetchTodos();
@@ -93,7 +93,7 @@ function Profile() {
   const fetchTodos = async (date = queryDate) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`https://to-do-application-uyb6.onrender.com/profile/todo?date=${date}`, {
+      const response = await axios.get(`https://to-do-application-uyb6.onrender.com/api/profile/todo?date=${date}`, {
         headers: { Authorization: token }
       });
       setMyTasks(response.data);
@@ -105,7 +105,7 @@ function Profile() {
   const fetchTodayTodos = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`https://to-do-application-uyb6.onrender.com/profile/todo?date=${todayDate}`, {
+      const response = await axios.get(`https://to-do-application-uyb6.onrender.com/api/profile/todo?date=${todayDate}`, {
         headers: { Authorization: token }
       });
       setTodayTasks(response.data);
@@ -132,7 +132,7 @@ function Profile() {
     };
     try {
       const token = localStorage.getItem('token');
-      await axios.post('https://to-do-application-uyb6.onrender.com/profile/Addtodo', newTodo, {
+      await axios.post('https://to-do-application-uyb6.onrender.com/api/profile/Addtodo', newTodo, {
         headers: { Authorization: token }
       });
       inputRef.current.value = ''
@@ -147,7 +147,7 @@ function Profile() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('https://to-do-application-uyb6.onrender.com/profile', {
+        const res = await axios.get('https://to-do-application-uyb6.onrender.com/api/profile', {
           headers: { Authorization: token }
         });
         setEmail(res.data.email);
