@@ -17,6 +17,11 @@ app.use(cors({ origin: 'https://to-do-application-three-xi.vercel.app', credenti
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(express.static(path.join(__dirname, '..', 'FrontEnd', 'TO-Do', 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'FrontEnd', 'TO-Do', 'dist', 'index.html'));
+});
 
 
 app.use('/api/signin' , SignIn);
