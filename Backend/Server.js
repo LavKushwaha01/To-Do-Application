@@ -5,6 +5,7 @@ import profile from './Profile.js'
 
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
 const app = express();
@@ -24,7 +25,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, '..', 'FrontEnd', 'TO-Do', 'dist'))); // adjust path if needed
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'FrontEnd', 'TO-Do', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'FrontEnd', 'TO-Do', 'dist', 'index.html'));
 });
 
 
