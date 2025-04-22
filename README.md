@@ -8,6 +8,7 @@
 - 📅 **Search Todos by Date**
 - 🌙 **Dark Mode** (optional)
 
+
 ## 📦 Key Packages Used
 - **express – Web framework**
 
@@ -22,6 +23,7 @@
 - **cors – Handle cross-origin requests**
 
 
+
 ## 🚀 Tech Stack
 - **Frontend: React.js (with hooks and modern state management)**
 
@@ -30,6 +32,7 @@
 - **Database: MongoDB (with Mongoose)**
 
 - **Auth: JSON Web Tokens (JWT)**
+
 
 ## 🧪 How It Works
 1. **User Login**
