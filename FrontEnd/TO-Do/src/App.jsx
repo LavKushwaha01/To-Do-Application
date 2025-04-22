@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Link, useNavigate, Outlet } from "react-r
 import axios from 'axios';
 import './App.css'
 import './index.css'
-import Singup from './singUp';
+import Singup from './Singup';
 import SignIn from './SingIn';
 import Profile from './profile';
 
