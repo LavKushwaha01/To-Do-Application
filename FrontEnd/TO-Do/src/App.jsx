@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import { HashRouter, Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 
 import axios from 'axios';
 axios.defaults.baseURL = 'https://to-do-application-uyb6.onrender.com/api';
@@ -15,7 +15,7 @@ import Profile from './profile';
 function App() {
     return (
         <div>
-            <BrowserRouter>
+            <HashRouter>
                 <Routes>
 
                     <Route path="/" element={<Landing />} />
@@ -25,7 +25,7 @@ function App() {
                     <Route path="*" element={<ErrorPage />} />
 
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </div>
     )
 }
