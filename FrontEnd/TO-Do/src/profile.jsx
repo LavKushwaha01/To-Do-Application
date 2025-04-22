@@ -172,7 +172,7 @@ function Profile() {
       {email!='' ?(
      <div>
       <div id='navigation'>
-        <h1 style={{margin:'0px', padding:'0px', marginLeft:'600px', fontFamily:'cursive', fontSize:'30px'}}>Welcome to taskly</h1>
+        <h1 style={{margin:'0px', padding:'0px', marginLeft:'600px', fontFamily:'cursive', fontSize:'30px'}}>Welcome to taskly !</h1>
         
       </div>
 
