@@ -1,7 +1,7 @@
 
 import SignUp from './SignUp.js'
 import SignIn from './SignIn.js'
-import profile from './Profile.js'
+// import profile from './Profile.js'
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -26,7 +26,7 @@ app.get('*', (req, res) => {
 
 app.use('/api/signin' , SignIn);
 app.use('/api/signup' , SignUp);
-app.use('/api/profile' , profile);
+// app.use('/api/profile' , profile);
 
 
 app.listen(process.env.PORT, () => {
