@@ -172,7 +172,7 @@ function Profile() {
 
   return (
     <div className={darkMode ? 'dark-mode' : 'light-mode'}>
-      {email!='' ?(
+     
      <div>
       <div id='navigation'>
         <h1 style={{margin:'0px', padding:'0px', marginLeft:'600px', fontFamily:'cursive', fontSize:'30px'}}>Welcome to taskly !</h1>
@@ -322,17 +322,7 @@ function Profile() {
       </div>
 
       </div>
-      ) :(
-        <div>
-            <h1 style={{
-              display:"flex",
-              justifyContent:'center',
-              color:'red',
-            }}>Loading.. <br /><br /> Please wait for DataBase Fetch</h1>
-        </div>
-      )
-
-      }
+    
     </div>
 
 
