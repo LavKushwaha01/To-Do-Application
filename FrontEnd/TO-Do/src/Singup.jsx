@@ -98,14 +98,14 @@ function Singup() {
               />
             </a>
 
-            {/* Telegram */}
-            <a href="https://t.me/lavkushwaha01" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
-                alt="Telegram"
-                className='iconImage'
-              />
-            </a>
+            {/* Twitter */}
+            <a href="https://x.com/lavkushwaha2?t=y5uMnCjTPf_amwzHQLbrAg&s=08" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://static.vecteezy.com/system/resources/thumbnails/027/395/710/small_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png"
+                  alt="X"
+                  className="iconImage"
+                />
+              </a>
 
             {/* Email */}
             <a href="mailto:lavkumar062@gmail.com" target="_blank" rel="noopener noreferrer">

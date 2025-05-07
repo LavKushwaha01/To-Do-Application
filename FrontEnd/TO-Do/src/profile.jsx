@@ -31,7 +31,7 @@ function Profile() {
   const todayComplete = todayTasks.filter(task => task.completed).length;
   const todaypending = todayTotal - todayComplete;
   const Efficiency = todayTotal === 0 ? 0 : todayComplete / todayTotal;
-  const fixedEfficiency = parseFloat(Efficiency.toFixed(2))*100;
+  const fixedEfficiency = parseFloat(Efficiency.toFixed(2)) * 100;
 
 
   const toTitleCase = (str) =>
@@ -172,157 +172,157 @@ function Profile() {
 
   return (
     <div className={darkMode ? 'dark-mode' : 'light-mode'}>
-     
-     <div>
-      <div id='navigation'>
-        <h1 style={{margin:'0px', padding:'0px', marginLeft:'600px', fontFamily:'cursive', fontSize:'30px'}}>Welcome to taskly !</h1>
-        
-      </div>
 
-      <div className='todoAdd top-wrapper'>
-        <input type="text" name="addTodo" id="todoinput" ref={inputRef}
-          placeholder='Write your To-Do' />
-
-
-        <button id='inputbt' onClick={focusOnInput} style={{ width: '150px', }}>Add Todo</button>
-
-        <div className='todoAdd'>
-          <input
-            type="date"
-            value={searchDate}
-            onChange={handleChange}
-          />
-          <button
-            onClick={handleSearch}
-            className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition"
-          > Search</button>
+      <div>
+        <div id='navigation'>
+          <h1 style={{ margin: '0px', padding: '0px', marginLeft: '600px', fontFamily: 'cursive', fontSize: '30px' }}>Welcome to taskly !</h1>
 
         </div>
-      </div>
-      <div style={{ display: 'flex', width: '100%' }}>
 
-        <div id='preinput'>
-          <h2 style={{ fontFamily: "cursive", color: "black" }}>Most frequent Used</h2>
-          <hr></hr>
-          <ul >
-            {frequentTasks.map((task, index) => (
-              <li key={index} className="task-item" >
-                <span>{task}</span>
-                <button onClick={() => addTask(task)} id='btn'>➕</button>
-              </li>
-            ))}
-          </ul>
-
-        </div>
-        <div id='main-content'>
-          <h2 className="todo-list-heading">📝 My Todo List</h2>
-          <ul className="task-list">
-            {myTasks.map((task, index) => (
-              <li key={task._id || index} className="my-task-item">
-                {task.todo}
-                <input type="checkbox" id='cheakbox' checked={task.completed} onChange={() => handleCheckboxToggle(task._id, !task.completed)} />
-                <button className='change delete' onClick={() => deleteTodo(task._id)}>Delete</button>
-
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div id='overall'>
-
-          <div id='todaytask' >
-            <h3 style={{ margin: '15px', paddingTop: '15px' }} id='today'>Today's Stats</h3>
-            {Efficiency === 1 ? (
-              <p style={{ fontSize: "18px", color: '#28a745' }}>"🎉 All tasks completed! You're on fire today!"</p>
-
-            ) : (
-              <div>
-                <p style={{ color: '#E57373', fontWeight: 'bolder', marginBottom: '3px' }}>🚀 Stay focused! {todaypending} tasks still need your magic.</p>
-              </div>
-            )
-            }
-            <p style={{ fontSize: "18px" }}>📝 Total Tasks: <strong>{todayTotal}</strong></p>
-            <p style={{ fontSize: "18px" }}>✅ Completed Tasks: <strong>{todayComplete}</strong></p>
-            <p style={{ fontSize: "18px" }}>⏳ Pending Tasks: <strong>{todaypending}</strong></p>
-            <p style={{ fontSize: "18px" }}>📈 Efficiency : <strong>{fixedEfficiency} %</strong></p>
+        <div className='todoAdd top-wrapper'>
+          <input type="text" name="addTodo" id="todoinput" ref={inputRef}
+            placeholder='Write your To-Do' />
 
 
-          </div>
+          <button id='inputbt' onClick={focusOnInput} style={{ width: '150px', }}>Add Todo</button>
 
-          <div>
+          <div className='todoAdd'>
+            <input
+              type="date"
+              value={searchDate}
+              onChange={handleChange}
+            />
             <button
-              onClick={() => setDarkMode(!darkMode)}
-              style={{
-                marginTop: "80px",
-                marginRight: "20px",
-                padding: "8px",
-                borderRadius: "8px",
-                backgroundColor: darkMode ? "#222" : "#eee",
-                color: darkMode ? "#fff" : "#000"
-              }}
-            >
-              {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-            </button>
+              onClick={handleSearch}
+              className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition"
+            > Search</button>
+
           </div>
+        </div>
+        <div style={{ display: 'flex', width: '100%' }}>
+
+          <div id='preinput'>
+            <h2 style={{ fontFamily: "cursive", color: "black" }}>Most frequent Used</h2>
+            <hr></hr>
+            <ul >
+              {frequentTasks.map((task, index) => (
+                <li key={index} className="task-item" >
+                  <span>{task}</span>
+                  <button onClick={() => addTask(task)} id='btn'>➕</button>
+                </li>
+              ))}
+            </ul>
+
+          </div>
+          <div id='main-content'>
+            <h2 className="todo-list-heading">📝 My Todo List</h2>
+            <ul className="task-list">
+              {myTasks.map((task, index) => (
+                <li key={task._id || index} className="my-task-item">
+                  {task.todo}
+                  <input type="checkbox" id='cheakbox' checked={task.completed} onChange={() => handleCheckboxToggle(task._id, !task.completed)} />
+                  <button className='change delete' onClick={() => deleteTodo(task._id)}>Delete</button>
+
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div id='overall'>
+
+            <div id='todaytask' >
+              <h3 style={{ margin: '15px', paddingTop: '15px' }} id='today'>Today's Stats</h3>
+              {Efficiency === 1 ? (
+                <p style={{ fontSize: "18px", color: '#28a745' }}>"🎉 All tasks completed! You're on fire today!"</p>
+
+              ) : (
+                <div>
+                  <p style={{ color: '#E57373', fontWeight: 'bolder', marginBottom: '3px' }}>🚀 Stay focused! {todaypending} tasks still need your magic.</p>
+                </div>
+              )
+              }
+              <p style={{ fontSize: "18px" }}>📝 Total Tasks: <strong>{todayTotal}</strong></p>
+              <p style={{ fontSize: "18px" }}>✅ Completed Tasks: <strong>{todayComplete}</strong></p>
+              <p style={{ fontSize: "18px" }}>⏳ Pending Tasks: <strong>{todaypending}</strong></p>
+              <p style={{ fontSize: "18px" }}>📈 Efficiency : <strong>{fixedEfficiency} %</strong></p>
+
+
+            </div>
+
+            <div>
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                style={{
+                  marginTop: "80px",
+                  marginRight: "20px",
+                  padding: "8px",
+                  borderRadius: "8px",
+                  backgroundColor: darkMode ? "#222" : "#eee",
+                  color: darkMode ? "#fff" : "#000"
+                }}
+              >
+                {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div id='footer' style={{ display: 'flex', height: "85px", marginTop: "16px" }}>
+
+          <footer >
+            <h5 style={{ margin: "5px", padding: "0px", marginLeft: "550px", color: 'white' }}>connect with Me..</h5>
+            <div id='icon-container'>
+              {/* LinkedIn */}
+              <a href="https://www.linkedin.com/in/lav-kushwaha-b9057b292/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                  alt="LinkedIn"
+                  className='iconImage'
+                  style={{ marginLeft: "550px", marginBottom: '5px' }}
+                />
+              </a>
+
+              {/* Discord */}
+              <a href="https://discord.com/users/lavkushwaha01" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discordjs/discordjs-original.svg"
+                  alt="Discord"
+                  className='iconImage'
+                />
+              </a>
+
+              {/* GitHub */}
+              <a href="https://github.com/LavKushwaha01" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                  alt="GitHub"
+                  className='iconImage'
+                />
+              </a>
+
+              {/* Twitter */}
+              <a href="https://x.com/lavkushwaha2?t=y5uMnCjTPf_amwzHQLbrAg&s=08" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://static.vecteezy.com/system/resources/thumbnails/027/395/710/small_2x/twitter-brand-new-logo-3-d-with-new-x-shaped-graphic-of-the-world-s-most-popular-social-media-free-png.png"
+                  alt="X"
+                  className="iconImage"
+                />
+              </a>
+
+              {/* Email */}
+              <a href="mailto:lavkumar062@gmail.com" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                  alt="Email"
+                  className="iconImage"
+
+                />
+              </a>
+            </div>
+          </footer>
         </div>
 
       </div>
-      <div id='footer' style={{ display: 'flex', height: "85px", marginTop: "16px" }}>
 
-        <footer >
-          <h5 style={{ margin: "5px", padding: "0px", marginLeft: "550px", color:'white' }}>connect with Me..</h5>
-          <div id='icon-container'>
-            {/* LinkedIn */}
-            <a href="https://www.linkedin.com/in/lav-kushwaha-b9057b292/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                alt="LinkedIn"
-                className='iconImage'
-                style={{ marginLeft: "550px" , marginBottom:'5px'}}
-              />
-            </a>
-
-            {/* Discord */}
-            <a href="https://discord.com/users/lavkushwaha01" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discordjs/discordjs-original.svg"
-                alt="Discord"
-                className='iconImage'
-              />
-            </a>
-
-            {/* GitHub */}
-            <a href="https://github.com/LavKushwaha01" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                alt="GitHub"
-                className='iconImage'
-              />
-            </a>
-
-            {/* Telegram */}
-            <a href="https://t.me/lavkushwaha01" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
-                alt="Telegram"
-                className='iconImage'
-              />
-            </a>
-
-            {/* Email */}
-    <a href="mailto:lavkumar062@gmail.com" target="_blank" rel="noopener noreferrer">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
-        alt="Email"
-        className="iconImage"
-        
-      />
-    </a>
-          </div>
-        </footer>
-      </div>
-
-      </div>
-    
     </div>
 
 
