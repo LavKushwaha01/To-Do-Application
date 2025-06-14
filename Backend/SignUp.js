@@ -10,7 +10,8 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'https://to-do-application-three-xi.vercel.app', credentials: true }));
+app.use(cors({ origin: ['https://to-do-application-three-xi.vercel.app', 'http://localhost:5173'], credentials: true }));
+
 
 await connectDB();
 
