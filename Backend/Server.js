@@ -13,9 +13,9 @@ const app = express();
  app.use(express.json());
 app.use(cors({ origin: 'https://to-do-application-three-xi.vercel.app', credentials: true }));
 
-console.log("server error");
 
-// Use __dirname safely
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
