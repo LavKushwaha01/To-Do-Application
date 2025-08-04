@@ -70,7 +70,7 @@ router.get('/todo', async (req, res) => {
   }
 });
 
-// PATCH /profile/updatetodo/:id
+
 router.patch('/updatetodo/:id', async (req, res) => {
   const taskId = req.params.id;
   const { completed } = req.body;
