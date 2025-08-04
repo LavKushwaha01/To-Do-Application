@@ -12,7 +12,7 @@ import { Schema as _Schema, model } from "mongoose";
     required: true
   },
   date: {
-    type: String, // Format: YYYY-MM-DD
+    type: String, 
     required: true
   },
   email: {
